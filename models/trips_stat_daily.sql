@@ -1,15 +1,15 @@
   
 --{{ config(materialized='table') }} 
 select 
-DATE(started_at)   date ,
+ date ,
 count(*) trips, 
-max(price)/100  max_price_rub ,
-avg(distance)/1000    avg_distance_km
+max(price_rub)  max_price_rub ,
+avg(distance_m)/1000    avg_distance_km,
+   avg(price_rub)/avg(duration_s)*60  avg_price_rub_per_min
 
-from scooters_raw.trips
-group by DATE(started_at)
-order by
-    1 
+from {{ ref("trips_prep") }}
+group by DATE
+order by  1 
 /* Задача 2. Посчитать статистику поездок по дням. Результат записать в таблицу со столбцами:
 date - дата начала поездки
 trips - количество поездок за день

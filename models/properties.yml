@@ -16,4 +16,8 @@ models:
       materialized: "view"
   - name: "trips_stat"
     description: "Overall trips statistics"
-    
+  - name: "trips_stat_daily"
+    description: "trips daily statistics"
+    +indexes:
+        - columns: ['date']
+
