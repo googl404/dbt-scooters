@@ -21,3 +21,8 @@ models:
     +indexes:
         - columns: ['date']
 
+  - name: "trips_age_daily"
+    description: "Daily trips statistics by user age"
+
+  - name: "trips_age_daily_stat"
+    description: "Aggregation of daily trips statistics by user age"

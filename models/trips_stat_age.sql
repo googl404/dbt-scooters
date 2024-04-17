@@ -6,11 +6,40 @@
 Создать dbt-модель trips_stat_age и развернуть ее как таблицу
 Закоммитить изменения и отправить в удаленный репозиторий
 */
-with age_date_trips as (select  date_part('year', scooters_raw.trips.started_at )  -   date_part('year', scooters_raw.users.birth_date)   AS age ,
+/*with age_date_trips as (select  date_part('year', scooters_raw.trips.started_at )  -   date_part('year', scooters_raw.users.birth_date)   AS age ,
 date(scooters_raw.trips.started_at)  as date ,
 count(*) as cnt_trips
 FROM scooters_raw.trips
 join scooters_raw.users on scooters_raw.users.id=scooters_raw.trips.user_id group by 1,2 order by 2)
 
 select age, avg(cnt_trips) as avg_trips from age_date_trips group by 1 order by 1
-
+*/
+with
+    date_age_cte as (
+        select
+            date(t.started_at) as date,
+            extract(year from t.started_at) - extract(year from u.birth_date) as age
+        from
+            scooters_raw.trips as t
+            inner join scooters_raw.users as u on t.user_id = u.id
+    ),
+    count_cte as (
+        select
+            date,
+            age,
+            count(*) as trips
+        from
+            date_age_cte
+        group by
+            1,
+            2
+        )
+select
+    age,
+    avg(trips) as avg_trips
+from
+    count_cte
+group by
+    1
+order by
+    1
