@@ -31,6 +31,11 @@ models:
     description: "Trips prepared for geometry analysis"
     config:
       materialized: "view"
+  - name: "trips_users"
+    description: "trips_users"
+    config:
+      materialized: "view"
+
 
   - name: "parking_start_stat"
     description: "Trip start parking statistics by 500 m hexagons"

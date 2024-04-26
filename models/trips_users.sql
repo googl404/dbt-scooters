@@ -3,6 +3,6 @@ select
 from
     {{ ref('trips_prep') }} as t_p
 left join
-    scooters_raw.users as U
+    {{ source("scooters_raw", "users") }} as  U
  on t_p.user_id = u.id
   
