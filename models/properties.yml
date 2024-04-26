@@ -12,8 +12,7 @@ sources:
 models:
   - name: "trips_prep"
     description: "Trips prepared for analysis"
-    config:
-      materialized: "view"
+    
   - name: "trips_stat"
     description: "Overall trips statistics"
   - name: "trips_stat_daily"
@@ -32,9 +31,9 @@ models:
     config:
       materialized: "view"
   - name: "trips_users"
-    description: "trips_users"
+    description: "Prepared trips enriched with users data"
     config:
-      materialized: "view"
+      materialized: "incremental"
 
 
   - name: "parking_start_stat"
