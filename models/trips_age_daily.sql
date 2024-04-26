@@ -1,0 +1,14 @@
+
+    
+        select
+            date,
+            age,
+            count(*) as trips,
+            sum(price_rub) revenue_rub 
+
+        from
+              {{ ref('trips_users') }}
+        group by
+            1,
+            2
+       

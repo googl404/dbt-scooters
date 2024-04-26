@@ -12,8 +12,31 @@ sources:
 models:
   - name: "trips_prep"
     description: "Trips prepared for analysis"
-    config:
-      materialized: "view"
+    
   - name: "trips_stat"
     description: "Overall trips statistics"
-    
+  - name: "trips_stat_daily"
+    description: "trips daily statistics"
+    +indexes:
+        - columns: ['date']
+
+  - name: "trips_age_daily"
+    description: "Daily trips statistics by user age"
+
+  - name: "trips_age_daily_stat"
+    description: "Aggregation of daily trips statistics by user age"
+
+  - name: "trips_geom"
+    description: "Trips prepared for geometry analysis"
+    config:
+      materialized: "view"
+  - name: "trips_users"
+    description: "Prepared trips enriched with users data"
+    config:
+      materialized: "incremental"
+
+
+  - name: "parking_start_stat"
+    description: "Trip start parking statistics by 500 m hexagons"
+  - name: "parking_finish_stat"
+    description: "Trip finish parking statistics by 10 m hexagons"
