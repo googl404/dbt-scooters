@@ -4,7 +4,7 @@ sum(price_rub) revenue_daily
 from  {{ ref('trips_prep') }}
 
 {% if is_incremental() %}
-where date >= (select max(date)  - interval 2 days from  {{ this }})
+where date >= (select max(date)  - interval '2' days from  {{ this }})
  
 {% else %}  
 
