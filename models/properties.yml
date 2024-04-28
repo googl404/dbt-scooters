@@ -18,6 +18,7 @@ models:
     
   - name: "trips_stat"
     description: "Overall trips statistics"
+
   - name: "trips_stat_daily"
     description: "trips daily statistics"
     +indexes:
@@ -33,15 +34,23 @@ models:
     description: "Trips prepared for geometry analysis"
     config:
       materialized: "view"
+
   - name: "trips_users"
     description: "Prepared trips enriched with users data"
     config:
       materialized: "incremental"
+
   - name: "events_clean"
-    description: "events_clean"
+    description: "User events without duplicates"
     config:
       materialized: "incremental"
 
+ 
+    
+  - name: "revenue_daily"
+    description: "Summary daily revenue"
+    config:
+      materialized: "incremental"
 
   - name: "parking_start_stat"
     description: "Trip start parking statistics by 500 m hexagons"
