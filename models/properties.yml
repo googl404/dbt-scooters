@@ -83,9 +83,6 @@ models:
 
   - name: "events_stat"
     description: "Overall user events statistics"
+  - name: "age_groups"
+    description: "Age groups to split users for analysis"
 
-seeds:
-  - name: "models"
-    description: "Scooter models info and statistics"
-    config:
-      delimiter: ","

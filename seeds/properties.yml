@@ -10,3 +10,9 @@ seeds:
     description: "event_types"
     config:
       delimiter: ","
+
+  - name: "age_groups"
+    description: "Age groups to split users for analysis"
+    config:
+      delimiter: ","
+
