@@ -76,9 +76,14 @@ models:
   - name: "parking_finish_stat"
     description: "Trip finish parking statistics by 10 m hexagons"
 
+  - name: "events_full"
+    description: "events_full"
+    config:
+      materialized: "view"
 
+  - name: "events_stat"
+    description: "Overall user events statistics"
 
-    
 seeds:
   - name: "models"
     description: "Scooter models info and statistics"
