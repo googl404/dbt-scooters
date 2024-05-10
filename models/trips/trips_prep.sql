@@ -14,7 +14,7 @@ extract(epoch from (finished_at - started_at)) as duration_s,
 --case when price>0 and (finished_at - started_at)>0 then true
 --else false end as  is_free,
 finished_at <> started_at and price = 0 as is_free,
-date(started_at) as date 
+date(started_at) as date
 from {{ source("scooters_raw", "trips") }}
   
  
